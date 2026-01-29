@@ -28,36 +28,44 @@ export function Home() {
         </div>
 
         {/* COLLAGE VIDEOS */}
-        <div className="relative bg-black py-10 px-6">
-          <div className="flex flex-wrap justify-center gap-6">
+        <div className="bg-black py-16 px-6">
+          <div className="flex flex-wrap justify-center gap-8">
             {[
-              "/videos/Video1.webm",
-              "/videos/Video2.webm",
-              "/videos/Video3.webm",
-            ].map((src, i) => {
-              const rotation = i % 2 === 0 ? "rotate-[-6deg]" : "rotate-[6deg]"
+              {
+                video: "/videos/Video1.webm",
+                poster: "/image/imagenVideo1.webp",
+              },
+              {
+                video: "/videos/Video2.webm",
+                poster: "/image/ImagenVideo2.webp",
+              },
+              {
+                video: "/videos/Video3.webm",
+                poster: "/image/ImagenVideo3.webp",
+              },
+            ].map((item, i) => {
+              const rotation = i % 2 === 0 ? "-rotate-6" : "rotate-6"
 
               return (
                 <div
                   key={i}
-                  className={`bg-white p-2 rounded-lg shadow-xl transform ${rotation}`}
+                  className={`relative w-56 h-56 bg-transparent rounded-xl shadow-2xl transform ${rotation}`}
                 >
                   <video
-                    src={src}
-                    className="w-48 h-48 object-cover rounded-md"
+                    src={item.video}
+                    poster={item.poster}
+                    className="w-full h-full object-cover rounded-xl"
                     muted
                     loop
                     playsInline
-                    preload="auto"
-                    onLoadedData={(e) => {
-                      const video = e.currentTarget
-                      video.play()
-                      setTimeout(() => video.pause(), 120)
-                    }}
-                    onClick={(e) => {
-                      const video = e.currentTarget
-                      video.paused ? video.play() : video.pause()
-                    }}
+                    preload="metadata"
+                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseLeave={(e) => e.currentTarget.pause()}
+                    onClick={(e) =>
+                      e.currentTarget.paused
+                        ? e.currentTarget.play()
+                        : e.currentTarget.pause()
+                    }
                   />
                 </div>
               )
