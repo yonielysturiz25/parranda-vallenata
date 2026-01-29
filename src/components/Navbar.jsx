@@ -53,7 +53,19 @@ export function Navbar() {
           <a href="#" className="text-yellow-500">Inicio</a>
           <div className="flex justify-center gap-6 py-2">
             <a href="https://wa.me/573219965971" target="_blank" className="text-gray-300 hover:text-yellow-500 transition-colors px-2"><IoLogoWhatsapp size={24}/></a>
-            <a href="https://www.facebook.com/people/M-Son-Vallenato/61587264470123/" target="_blank" className="text-gray-300 hover:text-yellow-500 transition-colors px-2"><FaFacebook size={24}/></a>
+            <a
+                href="fb://profile/61587264470123"
+                onClick={(e) => {
+                  setTimeout(() => {
+                    window.location.href =
+                      "https://www.facebook.com/people/M-Son-Vallenato/61587264470123/"
+                  }, 500)
+                }}
+                className="bg-yellow-500 text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-yellow-400 transition"
+              >
+                <FaFacebook className="text-blue-600 text-lg" />
+                Facebook
+            </a>
             <a href="https://www.tiktok.com/@m.son.vallenato" target="_blank" className="text-gray-300 hover:text-yellow-500 transition-colors px-2"><FaTiktok size={24}/></a>
             <a href="https://www.instagram.com/msonvallenato?igsh=MW9yOGt1a3V0aHN3NA%3D%3D" target="_blank" className="text-gray-300 hover:text-yellow-500 transition-colors px-2"><FaInstagram size={24}/></a>
           </div>

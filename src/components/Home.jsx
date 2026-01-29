@@ -33,7 +33,7 @@ export function Home() {
             {[
               {
                 video: "/videos/Video1.webm",
-                poster: "/image/imagenVideo1.webp",
+                poster: "/image/ImagenVideo1.webp",
               },
               {
                 video: "/videos/Video2.webm",
@@ -49,18 +49,21 @@ export function Home() {
               return (
                 <div
                   key={i}
-                  className={`relative w-56 h-56 bg-transparent rounded-xl shadow-2xl transform ${rotation}`}
+                  className={`bg-white p-2 rounded-xl shadow-2xl transform ${rotation}`}
                 >
                   <video
                     src={item.video}
                     poster={item.poster}
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-48 h-48 object-cover rounded-lg bg-black"
                     muted
                     loop
                     playsInline
                     preload="metadata"
                     onMouseEnter={(e) => e.currentTarget.play()}
-                    onMouseLeave={(e) => e.currentTarget.pause()}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause()
+                      e.currentTarget.currentTime = 0
+                    }}
                     onClick={(e) =>
                       e.currentTarget.paused
                         ? e.currentTarget.play()
@@ -87,15 +90,20 @@ export function Home() {
           </div>
 
           <div className="mt-4 flex justify-center gap-6 flex-wrap">
-            <a
-              href="https://www.facebook.com/people/M-Son-Vallenato/61587264470123/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-yellow-500 text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-yellow-400 transition"
-            >
-              <FaFacebook className="text-blue-600 text-lg" />
-              Facebook
-            </a>
+          <a
+            href="fb://profile/61587264470123"
+            onClick={(e) => {
+              setTimeout(() => {
+                window.location.href =
+                  "https://www.facebook.com/people/M-Son-Vallenato/61587264470123/"
+              }, 500)
+            }}
+            className="bg-yellow-500 text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-yellow-400 transition"
+          >
+            <FaFacebook className="text-blue-600 text-lg" />
+            Facebook
+          </a>
+
 
             <a
               href="https://www.tiktok.com/@m.son.vallenato"
