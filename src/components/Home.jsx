@@ -33,7 +33,7 @@ export function Home() {
             {[
               {
                 video: "/videos/Video1.webm",
-                poster: "/image/ImagenVideo1.webp",
+                poster: "/image/imagenVideo1.webp",
               },
               {
                 video: "/videos/Video2.webm",
